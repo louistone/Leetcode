@@ -13,11 +13,16 @@ public:
       maxLeft = max(maxLeft, height[l]);
       maxRight = max(maxRight, height[r]);
       h = min(maxLeft, maxRight);
-      res += h >= height[l] ? h - height[l] : 0;
-      res += h >= height[r] ? h - height[r] : 0;
-      l++, r--;
+      if(maxLeft <= maxRight) {
+          res += h >= height[l] ? h - height[l] : 0;
+          l++;
+      }
+      else {
+          res +=  h >= height[r] ? h - height[r] : 0;
+          r--;
+      }
     }
 
     return res;
   }
-}
+};
